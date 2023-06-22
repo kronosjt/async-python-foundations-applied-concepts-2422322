@@ -13,7 +13,7 @@ async def sleep_three_then_five():
     await sleep_five()
 
 async def main():
-    results = await asyncio.gather(sleep_five(), sleep_three_then_five())
+    results = await asyncio.gather(sleep_three_then_five(), sleep_five())
     print(results)
 
 
