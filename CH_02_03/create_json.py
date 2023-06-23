@@ -33,6 +33,12 @@ async def main():
             b. 'python -m http.server'
         NOTE: Feel free to use CH_02_01_end.py for reference.
         """
-        data = "this is a place holder"
+        fetch_coroutines = []
+        for uri in URIS:
+            fetch_coroutines.append(fetch(session, uri))
+
+        data = await asyncio.gather(*fetch_coroutines)
+        write_to_file(data)
+        
 
 asyncio.run(main())
